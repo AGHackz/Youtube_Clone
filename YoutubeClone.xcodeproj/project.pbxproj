@@ -13,6 +13,9 @@
 		A9DA6F1B214396F20090308C /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F1A214396F20090308C /* Channel.swift */; };
 		A9DA6F1D214399610090308C /* AGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F1C214399610090308C /* AGImageView.swift */; };
 		A9DA6F1F21439A9F0090308C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F1E21439A9F0090308C /* APIManager.swift */; };
+		A9DA6F212143E1AB0090308C /* OptionsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F202143E1AB0090308C /* OptionsLauncher.swift */; };
+		A9DA6F232143E3FD0090308C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F222143E3FD0090308C /* Settings.swift */; };
+		A9DA6F252143E8C50090308C /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA6F242143E8C50090308C /* SettingsCell.swift */; };
 		A9E6C5A4213BA3EF00A32A46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E6C5A3213BA3EF00A32A46 /* AppDelegate.swift */; };
 		A9E6C5AB213BA3F400A32A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9E6C5AA213BA3F400A32A46 /* Assets.xcassets */; };
 		A9E6C5AE213BA3F400A32A46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9E6C5AC213BA3F400A32A46 /* LaunchScreen.storyboard */; };
@@ -27,6 +30,9 @@
 		A9DA6F1A214396F20090308C /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		A9DA6F1C214399610090308C /* AGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGImageView.swift; sourceTree = "<group>"; };
 		A9DA6F1E21439A9F0090308C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A9DA6F202143E1AB0090308C /* OptionsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLauncher.swift; sourceTree = "<group>"; };
+		A9DA6F222143E3FD0090308C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A9DA6F242143E8C50090308C /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A9E6C5A0213BA3EF00A32A46 /* YoutubeClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9E6C5A3213BA3EF00A32A46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9E6C5AA213BA3F400A32A46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 			children = (
 				A9DA6F18214396E80090308C /* Video.swift */,
 				A9DA6F1A214396F20090308C /* Channel.swift */,
+				A9DA6F222143E3FD0090308C /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,6 +113,8 @@
 		A9E6C5B8213BA74700A32A46 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9DA6F202143E1AB0090308C /* OptionsLauncher.swift */,
+				A9DA6F242143E8C50090308C /* SettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,12 +211,15 @@
 			files = (
 				A9DA6F1B214396F20090308C /* Channel.swift in Sources */,
 				A9E6C5BE213BB33800A32A46 /* UIView+Extension.swift in Sources */,
+				A9DA6F252143E8C50090308C /* SettingsCell.swift in Sources */,
 				A9DA6F1D214399610090308C /* AGImageView.swift in Sources */,
 				A9DA6F1F21439A9F0090308C /* APIManager.swift in Sources */,
 				A9DA6F19214396E80090308C /* Video.swift in Sources */,
 				A9E6C5A4213BA3EF00A32A46 /* AppDelegate.swift in Sources */,
 				A9E6C5BB213BA93900A32A46 /* HomeController.swift in Sources */,
 				A94C00E0213DB31200AF4AE2 /* UIColor+Extension.swift in Sources */,
+				A9DA6F212143E1AB0090308C /* OptionsLauncher.swift in Sources */,
+				A9DA6F232143E3FD0090308C /* Settings.swift in Sources */,
 				A989EF7E213EF71E00724E09 /* MenuBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

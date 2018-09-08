@@ -18,6 +18,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    var optionLauncher = OptionsLauncher()
+    
     lazy var menuBar: MenuBar = {
         let mb = MenuBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
         return mb
@@ -61,7 +63,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     @objc func optionBarButtonPressed() {
-        
+        optionLauncher.openOptionsMenu()
     }
     
     fileprivate func setupMenuBar() {
