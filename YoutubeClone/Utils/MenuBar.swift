@@ -119,11 +119,14 @@ class MenuCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        imageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
+//        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+//        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, constant: 1).isActive = true
+//        imageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor).isActive = true
+//        imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
     }
     
     func configCell(_ imageName: String) {

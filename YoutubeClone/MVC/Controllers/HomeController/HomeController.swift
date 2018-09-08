@@ -12,6 +12,12 @@ private let reuseIdentifier = "VideoCell"
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var videos = [Video]() {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
+    
     lazy var menuBar: MenuBar = {
         let mb = MenuBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
         return mb
@@ -19,6 +25,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getVideosData()
         self.setupNavigationBar()
         collectionView?.backgroundColor = .white
         // Register cell classes
@@ -27,12 +34,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupMenuBar()
     }
     
+    private func getVideosData() {
+        APIManager.sharedInstance.getVideos { (success, videos) in
+            DispatchQueue.main.async {
+                self.videos = videos
+            }
+        }
+    }
+    
     func setupNavigationBar() {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: 44))
         titleLabel.text = "Home"
         titleLabel.textColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.titleView = titleLabel
+        
+        let searchBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(searchBarButtonPressed))
+        searchBarButton.tintColor = .white
+        let optionBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(optionBarButtonPressed))
+        optionBarButton.tintColor = .white
+        self.navigationItem.rightBarButtonItems = [optionBarButton, searchBarButton]
+    }
+    
+    @objc func searchBarButtonPressed() {
+        
+    }
+    
+    @objc func optionBarButtonPressed() {
+        
     }
     
     fileprivate func setupMenuBar() {
@@ -55,12 +84,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 8
+        return videos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
-        
+        cell.video = self.videos[indexPath.row]
         // Configure the cell
         cell.configCell()
         return cell
@@ -84,9 +113,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
 class VideoCell: UICollectionViewCell {
     
-    lazy var img_videoThumb: UIImageView = {
-        let imageView = UIImageView()
+    var video: Video? {
+        didSet {
+            updateUIData()
+        }
+    }
+    
+    lazy var img_videoThumb: AGImageView = {
+        let imageView = AGImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -118,10 +154,10 @@ class VideoCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var img_userThumb: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "profile_user")
+    lazy var img_userThumb: AGImageView = {
+        let imageView = AGImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         return imageView
     }()
     
@@ -190,8 +226,22 @@ class VideoCell: UICollectionViewCell {
     func configCell() {
         setNeedsLayout()
         layoutIfNeeded()
-        img_videoThumb.image = #imageLiteral(resourceName: "dhoni")
         img_userThumb.makeCircular()
+    }
+    
+    func updateUIData() {
+        lbl_title.text = video?.title
+        lbl_description.text = video?.getDescription()
+        if let videoUrl = video?.thumbnail_image_name {
+            img_videoThumb.setImage(fromUrl: videoUrl)
+        } else {
+            img_videoThumb.image = nil
+        }
+        if let userThumbUrl = video?.channel?.profile_image_name {
+            img_userThumb.setImage(fromUrl: userThumbUrl)
+        } else {
+            img_userThumb.image = nil
+        }
     }
     
 }
